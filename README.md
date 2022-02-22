@@ -7,7 +7,7 @@ available for dependencies specified in `poetry.lock`.
 
 Add a new GitHub Actions workflow in `.github/workflows/poetry.yaml`:
 
-````yaml
+```yaml
 name: poetry
 
 on:
@@ -44,6 +44,6 @@ jobs:
 
             _Note: there may be dependencies in the table above which were not updated as part of this PR.
             The reason is they require manual updating._
-````
+```
 
 Customize the `peter-evans/create-pull-request` action to you heart's content.
