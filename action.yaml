@@ -12,6 +12,9 @@ runs:
     # - run: echo "POETRY_OUTDATED=$(poetry show --outdated)" >> $GITHUB_ENV
     #   shell: bash
 
+    - run: poetry install
+      shell: bash
+
     - run: poetry show --outdated > outdated.txt
       shell: bash
     - run: echo "::set-output name=deps::$(cat outdated.txt)"
