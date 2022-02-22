@@ -46,4 +46,4 @@ jobs:
             The reason is they require manual updating._
 ```
 
-Customize the `peter-evans/create-pull-request` action to you heart's content.
+Customize the [`peter-evans/create-pull-request` action](https://github.com/peter-evans/create-pull-request) to you heart's content.
