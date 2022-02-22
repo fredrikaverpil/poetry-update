@@ -19,22 +19,6 @@ runs:
         echo "EOF" >> $GITHUB_ENV
       shell: bash
 
-    - run: |
-        PR_BODY=$(cat << EOF
-
-        ```bash
-        $ poetry show --outdated
-
-        ${{ env.POETRY_OUTDATED }}
-        ```
-
-        _Note: there may be dependencies in the table above which were not updated as part of this PR.
-        The reason is they require manual updating._
-
-        EOF
-        )
-      shell: bash
-
     - run: poetry update
       shell: bash
 
@@ -47,4 +31,12 @@ runs:
         commit-message: "Update poetry dependencies"
         title: "Update poetry dependencies"
         body: |
-          ${{ env.PR_BODY }}
+
+          ```bash
+          $ poetry show --outdated
+
+          ${{ env.POETRY_OUTDATED }}
+          ```
+
+          _Note: there may be dependencies in the table above which were not updated as part of this PR.
+          The reason is they require manual updating._
