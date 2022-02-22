@@ -21,22 +21,3 @@ runs:
 
     - run: poetry update
       shell: bash
-
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      with:
-        delete-branch: true
-        branch: poetry-update
-        base: "main" # temp
-        commit-message: "Update poetry dependencies"
-        title: "Update poetry dependencies"
-        body: |
-
-          ```bash
-          $ poetry show --outdated
-
-          ${{ env.POETRY_OUTDATED }}
-          ```
-
-          _Note: there may be dependencies in the table above which were not updated as part of this PR.
-          The reason is they require manual updating._
