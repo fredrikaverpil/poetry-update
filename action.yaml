@@ -19,12 +19,6 @@ runs:
         echo "EOF" >> $GITHUB_ENV
       shell: bash
 
-    # - run: poetry show --outdated >> outdated.txt
-    #   shell: bash
-    # - run: echo "::set-output name=deps::$(cat outdated.txt)"
-    #   id: outdated
-    #   shell: bash
-
     - run: poetry update
       shell: bash
 
@@ -37,15 +31,13 @@ runs:
         commit-message: "Update poetry dependencies"
         title: "Update poetry dependencies"
         body: |
-          Update poetry dependencies
-          - pyproject.toml
-          - poetry.lock
+          # Update poetry dependencies
 
           ```bash
+          $ poetry show --outdated
+
           ${{ env.POETRY_OUTDATED }}
           ```
 
-# ```bash
-# ${{ steps.outdated.outputs.deps }}
-# ```
-
+          __Note: there may be dependencies in the table above which were not updated as part of this PR.
+          The reason is they require manual updating.__
