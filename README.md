@@ -1,4 +1,4 @@
-# poetry-update
+# poetry-update-action
 
 GitHub Action which will periodically create PRs if updates are
 available for dependencies specified in `poetry.lock`.
@@ -7,7 +7,7 @@ available for dependencies specified in `poetry.lock`.
 
 Add a new GitHub Actions workflow in `.github/workflows/poetry.yaml`:
 
-```yaml
+````yaml
 name: poetry
 
 on:
@@ -25,7 +25,7 @@ jobs:
           python-version: "3.10"
       - uses: fredrikaverpil/pipx-action@v1.3
       - run: pipx install poetry
-      - uses: fredrikaverpil/poetry-update@v1
+      - uses: fredrikaverpil/poetry-update-action@v1
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -44,6 +44,6 @@ jobs:
 
             _Note: there may be dependencies in the table above which were not updated as part of this PR.
             The reason is they require manual updating._
-```
+````
 
 Customize the `peter-evans/create-pull-request` action to you heart's content.

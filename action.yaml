@@ -1,4 +1,4 @@
-name: poetry-update
+name: poetry-update-action
 description: "CI bot which updates poetry dependencies via PR."
 
 runs:
