@@ -21,6 +21,7 @@ runs:
         delete-branch: true
         branch: poetry-update
         base: "main" # temp
+        commit-message: "Update poetry dependencies"
         title: "Update poetry dependencies"
         body: |
           Update poetry dependencies
