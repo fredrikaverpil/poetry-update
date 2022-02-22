@@ -12,6 +12,9 @@ runs:
     # - run: poetry show --outdated > ${{ RUNNER_TEMP }}/outdated.txt
     #   shell: bash
 
+    - run: echo "POETRY_OUTDATED=$(poetry show --outdated)" >> $GITHUB_ENV
+      shell: bash
+
     - run: poetry update
       shell: bash
 
@@ -27,3 +30,7 @@ runs:
           Update poetry dependencies
           - pyproject.toml
           - poetry.lock
+
+          ```bash
+          ${{ env.POETRY_OUTDATED }}
+          ```
