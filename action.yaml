@@ -15,7 +15,7 @@ runs:
     - run: poetry install
       shell: bash
 
-    - run: poetry show --outdated > outdated.txt
+    - run: poetry show --outdated >> outdated.txt
       shell: bash
     - run: echo "::set-output name=deps::$(cat outdated.txt)"
       id: outdated
@@ -41,6 +41,6 @@ runs:
           ${{ steps.outdated.outputs.deps }}
           ```
 
-          # ```bash
-          # ${{ env.POETRY_OUTDATED }}
-          # ```
+# ```bash
+# ${{ env.POETRY_OUTDATED }}
+# ```
