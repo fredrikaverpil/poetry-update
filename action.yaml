@@ -31,8 +31,6 @@ runs:
         commit-message: "Update poetry dependencies"
         title: "Update poetry dependencies"
         body: |
-          # Update poetry dependencies
-
           ```bash
           $ poetry show --outdated
 
