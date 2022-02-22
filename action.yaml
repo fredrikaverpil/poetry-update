@@ -1,0 +1,27 @@
+name: download-translations
+description: "Download any lokalise changes and prepare a pull request"
+
+inputs:
+  token:
+    description: Token used to create PR
+    required: false
+
+runs:
+  using: composite
+  steps:
+    # - run: poetry show --outdated > ${{ RUNNER_TEMP }}/outdated.txt
+    #   shell: bash
+
+    - run: poetry update
+      shell: bash
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        delete-branch: true
+        branch: poetry-update
+        title: "Update poetry dependencies"
+        body: |
+          Update poetry dependencies
+          - pyproject.toml
+          - poetry.lock
