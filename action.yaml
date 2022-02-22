@@ -1,10 +1,5 @@
-name: download-translations
-description: "Download any lokalise changes and prepare a pull request"
-
-inputs:
-  token:
-    description: Token used to create PR
-    required: false
+name: poetry-update
+description: "CI bot which updates poetry dependencies via PR."
 
 runs:
   using: composite
