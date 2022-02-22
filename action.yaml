@@ -20,6 +20,7 @@ runs:
       with:
         delete-branch: true
         branch: poetry-update
+        base: "main" # temp
         title: "Update poetry dependencies"
         body: |
           Update poetry dependencies
