@@ -9,10 +9,13 @@ inputs:
 runs:
   using: composite
   steps:
-    # - run: poetry show --outdated > ${{ RUNNER_TEMP }}/outdated.txt
+    # - run: echo "POETRY_OUTDATED=$(poetry show --outdated)" >> $GITHUB_ENV
     #   shell: bash
 
-    - run: echo "POETRY_OUTDATED=$(poetry show --outdated)" >> $GITHUB_ENV
+    - run: poetry show --outdated > outdated.txt
+      shell: bash
+    - run: echo "::set-output name=deps::$(cat outdated.txt)"
+      id: outdated
       shell: bash
 
     - run: poetry update
@@ -32,5 +35,9 @@ runs:
           - poetry.lock
 
           ```bash
-          ${{ env.POETRY_OUTDATED }}
+          ${{ steps.outdated.outputs.deps }}
           ```
+
+          # ```bash
+          # ${{ env.POETRY_OUTDATED }}
+          # ```
