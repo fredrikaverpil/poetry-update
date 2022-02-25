@@ -1,4 +1,4 @@
-# poetry-update-action
+# poetry-update
 
 GitHub Action which will periodically create PRs if updates are
 available for dependencies specified in `poetry.lock`.
@@ -25,7 +25,7 @@ jobs:
           python-version: "3.10"
       - uses: fredrikaverpil/pipx-action@v1.3
       - run: pipx install poetry
-      - uses: fredrikaverpil/poetry-update-action@v1
+      - uses: fredrikaverpil/poetry-update@v1
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
