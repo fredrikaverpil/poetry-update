@@ -12,7 +12,7 @@ name: poetry
 
 on:
   schedule:
-    - cron: "0 8 * * *" # every morning at 08:00
+    - cron: "0 9 * * 1-5" # weekdays at 09:00
   workflow_dispatch:
 
 jobs:
