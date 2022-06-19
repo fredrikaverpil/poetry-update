@@ -1,6 +1,6 @@
 # poetry-update
 
-GitHub action to periodically update all (or a subset of) your Poetry project's dependencies.
+GitHub action to periodically update all (or a subset) of your Poetry project's dependencies.
 
 The motivation behind this action is that there can sometimes be a considerable amount of fatigue in handling individual [dependabot](https://github.com/dependabot) updates.
 
