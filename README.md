@@ -61,3 +61,24 @@ You can optionally customize the commands of the action.
     cmd_show: 'poetry show --outdated'  # generate the output for the PR description
     cmd_update: 'poetry update'  # perform the desired update
 ```
+
+## Example using dependency groups
+
+Instead of updating all dependencies, you can specify a [dependency group](https://python-poetry.org/docs/master/managing-dependencies/#dependency-groups).
+
+⚠️ This feature is still in beta.
+
+```yaml
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fredrikaverpil/setup-pipx@v1.5
+
+      - run: pipx install --suffix=@1.2.0b2 --force git+https://github.com/python-poetry/poetry.git@1.2.0b2
+
+      - name: Create PR for dev dependencies only
+        uses: fredrikaverpil/poetry-update@v1.1
+        cmd_show: 'poetry@1.2.0b2 show --outdated --only dev'
+        cmd_update: 'poetry@1.2.0b2 update --only dev'
+```
