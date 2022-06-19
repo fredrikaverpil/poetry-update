@@ -12,7 +12,7 @@ name: poetry
 
 on:
   schedule:
-    - cron: "0 9 * * 1-5" # weekdays at 09:00
+    - cron: "0 9 * * 1" # Mondays at 09:00
   workflow_dispatch:
 
 jobs:
@@ -23,10 +23,9 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.10"
-      - uses: fredrikaverpil/pipx-action@v1.5
+      - uses: fredrikaverpil/setup-pipx@v1.5
       - run: pipx install poetry
-      - uses: fredrikaverpil/poetry-update@v1
-
+      - uses: fredrikaverpil/poetry-update@v1.1
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -36,9 +35,9 @@ jobs:
           title: "Update poetry dependencies"
           body: |
 
-            ```bash
-            $ poetry show --outdated
+            ### Outdated dependencies:
 
+            ```bash
             ${{ env.POETRY_OUTDATED }}
             ```
 
@@ -47,3 +46,15 @@ jobs:
 ```
 
 Customize the [`peter-evans/create-pull-request` action](https://github.com/peter-evans/create-pull-request) to you heart's content.
+
+## Advanced usage
+
+You can optionally customize the commands of the action.
+
+```yaml
+- uses: fredrikaverpil/poetry-update@v1.1
+  with:
+    cmd_install: 'poetry install'  # initial installation
+    cmd_show: 'poetry show --outdated'  # generate the output for the PR description
+    cmd_update: 'poetry update'  # perform the desired update
+```
