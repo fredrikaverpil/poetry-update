@@ -2,7 +2,7 @@
 
 GitHub Action which will periodically create PRs if updates are available for dependencies specified in `poetry.lock`.
 
-The motivation behind this PR is that there can sometimes be a considerable amount of fatigue in handling all dependencies one by one using [dependabot](https://github.com/dependabot).
+The motivation behind this PR is that there can sometimes be a considerable amount of fatigue in handling individual [dependabot](https://github.com/dependabot) updates.
 
 ## Quickstart
 
@@ -68,7 +68,7 @@ Instead of updating all dependencies, you limit the updates to a specific [depen
 ⚠️ Warnings:
 
 - The required poetry arguments are currently in beta.
-- You could end up having unwanted dependencies updated, if those happen to be sub-dependencies of the dependency group you are updating. It is currently unclear if this is a bug. For more information, see https://github.com/python-poetry/poetry/issues/5876.
+- You could end up having unwanted dependencies updated which are part of another dependency group. It is currently unclear if this is a bug. For more information, see https://github.com/python-poetry/poetry/issues/5876.
 
 ```yaml
 jobs:
