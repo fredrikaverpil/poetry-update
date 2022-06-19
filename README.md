@@ -1,7 +1,10 @@
 # poetry-update
 
-GitHub Action which will periodically create PRs if updates are
-available for dependencies specified in `poetry.lock`.
+GitHub Action which will periodically create PRs if updates are available for dependencies specified in `poetry.lock`.
+
+The motivation behind this PR is that there can sometimes be a considerable amount of fatigue in handling all dependencies one by one using [dependabot](https://github.com/dependabot).
+
+🔥 Hot tip: Use this action in combination with Poetry's [dependency groups](https://python-poetry.org/docs/master/managing-dependencies/#dependency-groups) feature for maximum customization.
 
 ## Quickstart
 
