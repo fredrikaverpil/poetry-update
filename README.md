@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.10"
-      - uses: fredrikaverpil/pipx-action@v1.5
+      - uses: fredrikaverpil/setup-pipx@v1.5
       - run: pipx install poetry
       - uses: fredrikaverpil/poetry-update@v1.1
       - name: Create Pull Request
