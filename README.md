@@ -1,8 +1,8 @@
 # poetry-update
 
-GitHub Action which will periodically create PRs if updates are available for dependencies specified in `poetry.lock`.
+GitHub action to periodically update all (or a subset of) your Poetry project's dependencies.
 
-The motivation behind this PR is that there can sometimes be a considerable amount of fatigue in handling individual [dependabot](https://github.com/dependabot) updates.
+The motivation behind this action is that there can sometimes be a considerable amount of fatigue in handling individual [dependabot](https://github.com/dependabot) updates.
 
 ## Quickstart
 
