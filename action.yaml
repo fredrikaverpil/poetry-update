@@ -1,18 +1,34 @@
 name: poetry-update-action
 description: "CI bot which updates poetry dependencies via PR."
 
+inputs:
+  cmd_install:
+    description: Install command
+    default: poetry install
+    required: false
+
+  cmd_show:
+    description: Show outdated command
+    default: poetry show --outdated
+    required: false
+
+  cmd_update:
+    description: Update command
+    default: poetry update
+    required: false
+
 runs:
   using: composite
   steps:
-    - run: poetry install
+    - run: ${{ inputs.cmd_install }}
       shell: bash
 
     - run: |
-        POETRY_OUTDATED=$(poetry show --outdated)
+        POETRY_OUTDATED=$(${{ inputs.cmd_show }})
         echo "POETRY_OUTDATED<<EOF" >> $GITHUB_ENV
         echo "$POETRY_OUTDATED" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
       shell: bash
 
-    - run: poetry update
+    - run: ${{ inputs.cmd_update }}
       shell: bash
