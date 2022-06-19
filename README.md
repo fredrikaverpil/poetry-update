@@ -81,6 +81,7 @@ jobs:
 
       - name: Create PR for dev dependencies only
         uses: fredrikaverpil/poetry-update@v1.1
-        cmd_show: 'poetry@1.2.0b2 show --outdated --only dev'
-        cmd_update: 'poetry@1.2.0b2 update --only dev'
+        with:
+            cmd_show: 'poetry@1.2.0b2 show --outdated --only dev'
+            cmd_update: 'poetry@1.2.0b2 update --only dev'
 ```
