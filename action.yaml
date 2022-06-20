@@ -2,17 +2,17 @@ name: poetry-update
 description: "CI bot which updates poetry dependencies via PR."
 
 inputs:
-  cmd_install:
+  install_command:
     description: Install command
     default: poetry install
     required: false
 
-  cmd_show:
+  show_outdated_command:
     description: Show outdated command
     default: poetry show --outdated
     required: false
 
-  cmd_update:
+  update_command:
     description: Update command
     default: poetry update
     required: false
@@ -24,11 +24,22 @@ runs:
       shell: bash
 
     - run: |
-        POETRY_OUTDATED=$(${{ inputs.cmd_show }})
-        echo "POETRY_OUTDATED<<EOF" >> $GITHUB_ENV
-        echo "$POETRY_OUTDATED" >> $GITHUB_ENV
+        POETRY_OUTDATED_BEFORE=$(${{ inputs.cmd_show }})
+        echo "POETRY_OUTDATED_BEFORE<<EOF" >> $GITHUB_ENV
+        echo "$POETRY_OUTDATED_BEFORE" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
       shell: bash
 
-    - run: ${{ inputs.cmd_update }}
+    - run: |
+        POETRY_UPDATED=$(${{ inputs.cmd_update }})
+        echo "POETRY_UPDATED<<EOF" >> $GITHUB_ENV
+        echo "$POETRY_UPDATED" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+      shell: bash
+
+    - run: |
+        POETRY_OUTDATED_AFTER=$(${{ inputs.cmd_show }})
+        echo "POETRY_OUTDATED_AFTER<<EOF" >> $GITHUB_ENV
+        echo "$POETRY_OUTDATED_AFTER" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
       shell: bash
