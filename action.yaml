@@ -20,25 +20,25 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: ${{ inputs.cmd_install }}
+    - run: ${{ inputs.install_command }}
       shell: bash
 
     - run: |
-        POETRY_OUTDATED_BEFORE=$(${{ inputs.cmd_show }})
+        POETRY_OUTDATED_BEFORE=$(${{ inputs.show_outdated_command }})
         echo "POETRY_OUTDATED_BEFORE<<EOF" >> $GITHUB_ENV
         echo "$POETRY_OUTDATED_BEFORE" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
       shell: bash
 
     - run: |
-        POETRY_UPDATED=$(${{ inputs.cmd_update }})
+        POETRY_UPDATED=$(${{ inputs.update_command }})
         echo "POETRY_UPDATED<<EOF" >> $GITHUB_ENV
         echo "$POETRY_UPDATED" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
       shell: bash
 
     - run: |
-        POETRY_OUTDATED_AFTER=$(${{ inputs.cmd_show }})
+        POETRY_OUTDATED_AFTER=$(${{ inputs.show_outdated_command }})
         echo "POETRY_OUTDATED_AFTER<<EOF" >> $GITHUB_ENV
         echo "$POETRY_OUTDATED_AFTER" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
