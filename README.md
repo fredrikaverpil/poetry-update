@@ -92,11 +92,11 @@ jobs:
     steps:
       - uses: fredrikaverpil/setup-pipx@v1.5
 
-      - run: pipx install --suffix=@1.2.0b2 --force git+https://github.com/python-poetry/poetry.git@1.2.0b2
+      - run: pipx install --suffix=@master --force git+https://github.com/python-poetry/poetry.git@master
 
       - name: Create PR for dev dependencies only (dependency group "dev")
         uses: fredrikaverpil/poetry-update@v1.2
         with:
-          show_outdated_command: 'poetry@1.2.0b2 show --outdated --only dev'
-          update_command: 'poetry@1.2.0b2 update --only dev'
+          show_outdated_command: 'poetry@master show --outdated --only dev'
+          update_command: 'poetry@master update --only dev'
 ```
