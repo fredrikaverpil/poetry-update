@@ -80,9 +80,7 @@ You can optionally customize the commands of the action.
 
 Instead of updating all dependencies, you can limit the updates to one or more [dependency group](https://python-poetry.org/docs/master/managing-dependencies/#dependency-groups) using the `--only` `--with` or `--without` arguments to the `poetry update` command.
 
-⚠️ Warnings:
-
-- The required poetry arguments are currently in beta.
+- ✋ This requires Poetry 1.2.0 or later.
 - You could end up having unwanted dependencies updated which are part of another dependency group. It is currently unclear if this is a bug. For more information, see https://github.com/python-poetry/poetry/issues/5876.
 
 ```yaml
@@ -92,11 +90,9 @@ jobs:
     steps:
       - uses: fredrikaverpil/setup-pipx@v1.5
 
-      - run: pipx install --suffix=@master --force git+https://github.com/python-poetry/poetry.git@master
-
       - name: Create PR for dev dependencies only (dependency group "dev")
         uses: fredrikaverpil/poetry-update@v1.2
         with:
-          show_outdated_command: 'poetry@master show --outdated --only dev'
-          update_command: 'poetry@master update --only dev'
+          show_outdated_command: 'poetry show --outdated --only dev'
+          update_command: 'poetry update --only dev'
 ```
